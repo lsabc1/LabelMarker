@@ -9,6 +9,7 @@
             <div class="panel panel-default">
                 {% autoescape off %}
                 <!--代表将html标签文本转义成标签显示-->
+                <!-- 下面显示要标注的题目 -->
                 <div class="panel-body">
                     <p class="card-title">
                         <h1>Feature:</h1>
@@ -30,16 +31,18 @@
                     <h1>Choose Label:</h1>
                     <hr/>
                 </p>
+                    <!-- 以下是生成的投票页面 -->
                     <form action="tagging-get" method="get">
                         {{ taggingCheck }}
 
                         <!-- Button trigger modal -->
                         <div>
-                            <a href="#" data-toggle="modal" data-target="#exampleModal">
+                            <a href="#" data-toggle="modal" data-target="#exampleModal"> <!-- 查看统计结果按钮 -->
                             <h4>Marked data count<h4>
                             </a>
                         </div>
                         <br/>
+                        <!-- 投票的两个按钮 -->
                         <a type="button" href="tagging-get.html" class="btn btn-warning btn-lg">Change another</a>&nbsp&nbsp&nbsp&nbsp
                         <button type="submit" class="btn float-right btn-success btn-lg">&nbsp&nbspSubmit&nbsp&nbsp</button>
                     </form>
@@ -48,6 +51,7 @@
 
 
             <!-- Modal -->
+            <!-- 以下都是统计结果的页面 -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

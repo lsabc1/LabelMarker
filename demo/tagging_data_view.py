@@ -15,11 +15,11 @@ def showtagging_data(request):
         tag_name_list = []
         file_object = open('label_data/label_list.txt', 'r')
         for f in file_object:
-            tag_name_list.append(f.strip())
+            tag_name_list.append(f.strip())     #取出所有的标签
         file_object.close()
 
         count = 0
-        for tag in tag_name_list:
+        for tag in tag_name_list:       #根据标签动态生成投票的页面
             text += '<div class="radio"> <label class="form-check-label">'
             text += '<input type="radio" name="label" value="' + str(tag) + '">'
             text += str(tag)
@@ -29,7 +29,7 @@ def showtagging_data(request):
         # 放置一个隐藏的输入框，传递title的值到缓冲页面
         text += "<input name='title' value='" + str(request.GET["title"]) + "'  style='display:none;' ></input>"
 
-        ctx['taggingCheck'] = text
+        ctx['taggingCheck'] = text      #传递生成的投票页面
 
         # 统计当前标注情况
         file_object = open('label_data/labeled_data.txt', 'r')
@@ -48,6 +48,6 @@ def showtagging_data(request):
         for i in tag_name_list:
             text += '<p>label ' + str(i) + ': ' + str(s[i]) + '</p>'
         text += '<p>Sum: ' + str(sum) + '</p>'
-        ctx['already'] = text
+        ctx['already'] = text       #传递统计结果页面
 
     return render(request, "tagging_data.html", ctx)
